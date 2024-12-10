@@ -1172,7 +1172,14 @@ iframe.simulation {
   height:395px;
 }
 
-
+@media only screen and (max-width: 600px) {
+  iframe.simulation {
+    scale: 0.5;
+    transform: translate(-318px); /* move it back by half of its original width, and then adjust the padding around it be changing the margin */
+    margin-top: -100px;
+    margin-bottom: -100px;
+  }
+}
 
 .portfolio-details .portfolio-details-slider img {
   width: 100%;
