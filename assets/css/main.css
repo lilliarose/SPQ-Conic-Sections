@@ -603,16 +603,18 @@ section,
   font-size: 24px;
 }
 
+.about .references {
+  padding: 0;
+  list-style: none;
+  color: grey;
+  font-size: 14px;
+}
+
 .about .content ul {
   list-style: none;
   padding: 0;
 }
 
-.about .content ul li {
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-}
 
 .about .content ul strong {
   margin-right: 10px;
@@ -862,9 +864,9 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Services Section
+# research Section
 --------------------------------------------------------------*/
-.services .service-item {
+.research .research-item {
   background-color: var(--surface-color);
   box-shadow: 0px 5px 90px 0px rgba(0, 0, 0, 0.1);
   height: 100%;
@@ -874,7 +876,7 @@ section,
   border-radius: 5px;
 }
 
-.services .service-item .icon {
+.research .research-item .icon {
   margin: 0 auto;
   width: 100px;
   height: 100px;
@@ -885,40 +887,40 @@ section,
   position: relative;
 }
 
-.services .service-item .icon i {
+.research .research-item .icon i {
   font-size: 36px;
   transition: 0.5s;
   position: relative;
 }
 
-.services .service-item .icon svg {
+.research .research-item .icon svg {
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.services .service-item .icon svg path {
+.research .research-item .icon svg path {
   transition: 0.5s;
   fill: color-mix(in srgb, var(--default-color), transparent 95%);
 }
 
-.services .service-item h3 {
+.research .research-item h3 {
   font-weight: 700;
   margin: 10px 0 15px 0;
   font-size: 22px;
 }
 
-.services .service-item p {
+.research .research-item p {
   line-height: 24px;
   font-size: 14px;
   margin-bottom: 0;
 }
 
-.services .service-item:hover {
+.research .research-item:hover {
   box-shadow: 0px 5px 35px 0px rgba(0, 0, 0, 0.1);
 }
 
-.services .service-item img{
+.research .research-item img{
   margin: 0 auto;
   border-radius: 5px;
   display: flex;
@@ -929,75 +931,75 @@ section,
   transition: 0.5s;
 }
 
-.services .service-item.item-cyan i {
+.research .research-item.item-cyan i {
   color: #0dcaf0;
 }
 
-.services .service-item.item-cyan:hover .icon i {
+.research .research-item.item-cyan:hover .icon i {
   color: #fff;
 }
 
-.services .service-item.item-cyan:hover .icon path {
+.research .research-item.item-cyan:hover .icon path {
   fill: #0dcaf0;
 }
 
-.services .service-item.item-orange i {
+.research .research-item.item-orange i {
   color: #fd7e14;
 }
 
-.services .service-item.item-orange:hover .icon i {
+.research .research-item.item-orange:hover .icon i {
   color: #fff;
 }
 
-.services .service-item.item-orange:hover .icon path {
+.research .research-item.item-orange:hover .icon path {
   fill: #fd7e14;
 }
 
-.services .service-item.item-teal i {
+.research .research-item.item-teal i {
   color: #20c997;
 }
 
-.services .service-item.item-teal:hover .icon i {
+.research .research-item.item-teal:hover .icon i {
   color: #fff;
 }
 
-.services .service-item.item-teal:hover .icon path {
+.research .research-item.item-teal:hover .icon path {
   fill: #20c997;
 }
 
-.services .service-item.item-red i {
+.research .research-item.item-red i {
   color: #df1529;
 }
 
-.services .service-item.item-red:hover .icon i {
+.research .research-item.item-red:hover .icon i {
   color: #fff;
 }
 
-.services .service-item.item-red:hover .icon path {
+.research .research-item.item-red:hover .icon path {
   fill: #df1529;
 }
 
-.services .service-item.item-indigo i {
+.research .research-item.item-indigo i {
   color: #6610f2;
 }
 
-.services .service-item.item-indigo:hover .icon i {
+.research .research-item.item-indigo:hover .icon i {
   color: #fff;
 }
 
-.services .service-item.item-indigo:hover .icon path {
+.research .research-item.item-indigo:hover .icon path {
   fill: #6610f2;
 }
 
-.services .service-item.item-pink i {
+.research .research-item.item-pink i {
   color: #f3268c;
 }
 
-.services .service-item.item-pink:hover .icon i {
+.research .research-item.item-pink:hover .icon i {
   color: #fff;
 }
 
-.services .service-item.item-pink:hover .icon path {
+.research .research-item.item-pink:hover .icon path {
   fill: #f3268c;
 }
 
@@ -1354,18 +1356,18 @@ iframe.simulation {
 }
 
 /*--------------------------------------------------------------
-# Service Details Section
+# research Details Section
 --------------------------------------------------------------*/
-.service-details .service-box {
+.research-details .research-box {
   padding: 20px;
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
 }
 
-.service-details .service-box+.service-box {
+.research-details .research-box+.research-box {
   margin-top: 30px;
 }
 
-.service-details .service-box h4 {
+.research-details .research-box h4 {
   font-size: 20px;
   font-weight: 700;
   border-bottom: 2px solid color-mix(in srgb, var(--default-color), transparent 92%);
@@ -1373,7 +1375,7 @@ iframe.simulation {
   margin-bottom: 15px;
 }
 
-.service-details .services-list a {
+.research-details .research-list a {
   color: color-mix(in srgb, var(--default-color), transparent 20%);
   background-color: color-mix(in srgb, var(--default-color), transparent 96%);
   display: flex;
@@ -1383,31 +1385,31 @@ iframe.simulation {
   transition: 0.3s;
 }
 
-.service-details .services-list a:first-child {
+.research-details .research-list a:first-child {
   margin-top: 0;
 }
 
-.service-details .services-list a i {
+.research-details .research-list a i {
   font-size: 16px;
   margin-right: 8px;
   color: var(--accent-color);
 }
 
-.service-details .services-list a.active {
+.research-details .research-list a.active {
   color: var(--contrast-color);
   background-color: var(--accent-color);
 }
 
-.service-details .services-list a.active i {
+.research-details .research-list a.active i {
   color: var(--contrast-color);
 }
 
-.service-details .services-list a:hover {
+.research-details .research-list a:hover {
   background-color: color-mix(in srgb, var(--accent-color), transparent 95%);
   color: var(--accent-color);
 }
 
-.service-details .download-catalog a {
+.research-details .download-catalog a {
   color: var(--default-color);
   display: flex;
   align-items: center;
@@ -1416,67 +1418,67 @@ iframe.simulation {
   border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
-.service-details .download-catalog a:first-child {
+.research-details .download-catalog a:first-child {
   border-top: 0;
   padding-top: 0;
 }
 
-.service-details .download-catalog a:last-child {
+.research-details .download-catalog a:last-child {
   padding-bottom: 0;
 }
 
-.service-details .download-catalog a i {
+.research-details .download-catalog a i {
   font-size: 24px;
   margin-right: 8px;
   color: var(--accent-color);
 }
 
-.service-details .download-catalog a:hover {
+.research-details .download-catalog a:hover {
   color: var(--accent-color);
 }
 
-.service-details .help-box {
+.research-details .help-box {
   background-color: var(--accent-color);
   color: var(--contrast-color);
   margin-top: 30px;
   padding: 30px 15px;
 }
 
-.service-details .help-box .help-icon {
+.research-details .help-box .help-icon {
   font-size: 48px;
 }
 
-.service-details .help-box h4,
-.service-details .help-box a {
+.research-details .help-box h4,
+.research-details .help-box a {
   color: var(--contrast-color);
 }
 
-.service-details .services-img {
+.research-details .research-img {
   margin-bottom: 20px;
 }
 
-.service-details h3 {
+.research-details h3 {
   font-size: 26px;
   font-weight: 700;
 }
 
-.service-details p {
+.research-details p {
   font-size: 15px;
 }
 
-.service-details ul {
+.research-details ul {
   list-style: none;
   padding: 0;
   font-size: 15px;
 }
 
-.service-details ul li {
+.research-details ul li {
   padding: 5px 0;
   display: flex;
   align-items: center;
 }
 
-.service-details ul i {
+.research-details ul i {
   font-size: 20px;
   margin-right: 8px;
   color: var(--accent-color);
