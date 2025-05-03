@@ -894,6 +894,24 @@ section,
   position: relative;
 }
 
+.caption {
+  font-size: 14px;
+  color: #858585;
+  padding-left: 15px;
+}
+
+.portfolio-details h3 {
+  padding-top: 25px;
+}
+
+.same-line {
+  display: inline-block;
+}
+
+.simulation {
+  margin-top: 15px;
+}
+
 .research .research-item .icon img {
   font-size: 36px;
   width: 40px;

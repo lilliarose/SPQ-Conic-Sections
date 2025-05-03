@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Research Section - Title</title>
+  <title>Plotting Orbits with Python Library Matplotlib</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -26,6 +26,11 @@
 
   <!-- Main CSS File -->
   <link href="../assets/css/main.css" rel="stylesheet">
+
+  <!-- Code highlight.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs-themes@1.0.0/tomorrow.css">
+  <script>hljs.highlightAll();</script>
 
   <!-- =======================================================
   * Template Name: MyResume
@@ -61,10 +66,10 @@
         <nav class="breadcrumbs">
           <ol>
             <li><a href="../index.html">Home</a></li>
-            <li class="current">Three Body Problem</li>
+            <li class="current">Plotting Orbits with Python Library Matplotlib</li>
           </ol>
         </nav>
-        <h1>Three Body Problem</h1>
+        <h1>Plotting Orbits with Python Library Matplotlib</h1>
       </div>
     </div><!-- End Page Title -->
 
@@ -77,22 +82,26 @@
 
           <div class="col-lg-8" data-aos="fade-up">
             <div class="portfolio-description">
-              <h2>Three Body Problem</h2>
+              <h2>What tools were used?</h2>
               <p>
-                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+                Python is a very high level language and rather easy to understand; the topic of coding orbits in Python was, on the other hand, much more difficult. Thankfully, [name]'s videos were invaluable in supporting this challenge, and we ended up with some good results! 
+                Using Matplotlib, a Python library that is made for plotting graphs from data, and some other maths-based Python libraries, we were able to effectively create a set of data points of a planet's position in the <a href="./05twoBodyProblem.html"> two body problem</a> 
               </p>
-              <!-- TODO: MAKE NOT ABLE TO RESIZE-->
-              <iframe class="simulation" src="iframe - threebodyproblemsimulation.html"></iframe>
+              <h2>Explaing the code</h2>
               <p>
-                Amet consequatur qui dolore veniam voluptatem voluptatem sit. Non aspernatur atque natus ut cum nam et. Praesentium error dolores rerum minus sequi quia veritatis eum. Eos et doloribus doloremque nesciunt molestiae laboriosam.
+                Full credit to [video creator] for the code - although I have slightly adapted and added in my own data and some functionality, the videos were instrumental in aiding the development of this code. Take a look at his videos by using the research link.
+                - two files, one with all the functions, other with main logic of program
+                - data file with different orbiting bodies (denoted in the code by OB) and central bodies (CB), where a body can be both an OB and CB, for example the Earth. However, it is important to know that this code only simulates the two-body problem so, for example, having the Moon orbit the Earth would not give a very valid result because the mass of the Moon is comparable to that of the Earth.
+                This allows you to easily modify the code to go from having Venus orbit the Sun to Halley's Comet orbiting the Sun - by just changing one line of code!
               </p>
 
               <p>
-                Impedit ipsum quae et aliquid doloribus et voluptatem quasi. Perspiciatis occaecati earum et magnam animi. Quibusdam non qui ea vitae suscipit vitae sunt. Repudiandae incidunt cumque minus deserunt assumenda tempore. Delectus voluptas necessitatibus est.
+                The following is the main logic of the program:
+
+                The following is the more complex details of fuctions called in the main program:
               </p>
 
               <p>
-                Sunt voluptatum sapiente facilis quo odio aut ipsum repellat debitis. Molestiae et autem libero. Explicabo et quod necessitatibus similique quis dolor eum. Numquam eaque praesentium rem et qui nesciunt.
               </p>
 
             </div>
@@ -102,7 +111,7 @@
             <div class="portfolio-info">
               <h3>Research links </h3>
               <ul>
-                <li><strong>Understanding and Solving the Three Body Problem</strong> <a href="https://youtu.be/YHHVkUrg4_M">Three Body Problem - YouTube</a></li>
+                <li><strong>Alfonso Gonzales video</strong> <a href="https://youtu.be/YHHVkUrg4_M">Simulating orbits using Python.</a></li>
               </ul>
             </div>
           </div>

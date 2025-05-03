@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Research Section - Title</title>
+  <title>Simulating orbits with p5.js</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -27,16 +27,22 @@
   <!-- Main CSS File -->
   <link href="../assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: MyResume
-  * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-  * Updated: Jun 29 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <!-- Javascript Import -->
+  <script type='module' src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+  <script src="../assets/js/chapter2 - n body problem.js"></script>
+  
+  <!-- Highlight.js import to highlight code-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs-themes@1.0.0/tomorrow.css">
+  <script>hljs.highlightAll();</script>
+
 </head>
 
-<body class="portfolio-details-page">
+<body class="portfolio-details-page" onload="load()">
 
   <header id="header" class="header d-flex flex-column justify-content-center">
 
@@ -47,8 +53,8 @@
         <li><a href="../index.html#hero" class="active"><i class="bi bi-house navicon"></i><span>Home</span></a></li>
         <li><a href="../index.html#about"><img class="navicon" src="../assets/img/astronaut.png"><span>Summary</span></a></li>
         <li><a href="../index.html#timeline"><img class="navicon" src="../assets/img/solar-system.png"></i><span>Research Timeline</span></a></li>
-        <li><a href="../index.html#services"><img class="navicon" src="../assets/img/space-travel.png"><span>All Research</span></a></li>
-       </ul>
+        <li><a href="../index.html#services"><img class="navicon" src="../assets/img/space-travel.png"><span>All Research</span></a></li> 
+      </ul>
     </nav>
 
   </header>
@@ -61,14 +67,13 @@
         <nav class="breadcrumbs">
           <ol>
             <li><a href="../index.html">Home</a></li>
-            <li class="current">Three Body Problem</li>
+            <li class="current">p5.js Simulations</li>
           </ol>
         </nav>
-        <h1>Three Body Problem</h1>
+        <h1>p5.js Simulations</h1>
       </div>
     </div><!-- End Page Title -->
 
-    <!-- Portfolio Details Section -->
     <section id="portfolio-details" class="portfolio-details section">
 
       <div class="container" data-aos="fade-up">
@@ -77,32 +82,120 @@
 
           <div class="col-lg-8" data-aos="fade-up">
             <div class="portfolio-description">
-              <h2>Three Body Problem</h2>
-              <p>
-                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
-              </p>
-              <!-- TODO: MAKE NOT ABLE TO RESIZE-->
-              <iframe class="simulation" src="iframe - threebodyproblemsimulation.html"></iframe>
-              <p>
-                Amet consequatur qui dolore veniam voluptatem voluptatem sit. Non aspernatur atque natus ut cum nam et. Praesentium error dolores rerum minus sequi quia veritatis eum. Eos et doloribus doloremque nesciunt molestiae laboriosam.
-              </p>
-
-              <p>
-                Impedit ipsum quae et aliquid doloribus et voluptatem quasi. Perspiciatis occaecati earum et magnam animi. Quibusdam non qui ea vitae suscipit vitae sunt. Repudiandae incidunt cumque minus deserunt assumenda tempore. Delectus voluptas necessitatibus est.
-              </p>
-
-              <p>
-                Sunt voluptatum sapiente facilis quo odio aut ipsum repellat debitis. Molestiae et autem libero. Explicabo et quod necessitatibus similique quis dolor eum. Numquam eaque praesentium rem et qui nesciunt.
-              </p>
-
+              <h2>Overview</h2>
+              Coding visual simulations of orbits to share on the internet could not be easier with p5.js. This JavaScript library is set out in such an intuitive way that really allows you to take full advantage of JavaScript's ability to create visuals and the object-oriented programming to create some amazing simulations. The way you write the code is really useful in terms of stepping through time for a system, and with each step updating the acceleration, velocity and position of every object - making it perfect for simulating gravitational attraction!
+              <br>
+              This is an example of an N-Body problem which I have coded in p5.js. Thanks to the object-oriented approach, you can select any number for of bodies and the program simply adds a Body object to the list which is iterated through.
+              <br>
+              <br>
+                <div class="same-line">
+                  <label for="n-value"class="form-label">Number of planets: </label>
+                  <input type="number" id="nInput" style="width: 60px;" min="1" max="20">
+                </div>
+                <button onclick="submitCallback()" id="submitButton" class="btn btn-light">Go</button>
             </div>
+            <div id="canvasContainer" class="simulation container" data-aos="fade-up">
+            </div>
+            <p class="caption">The N-Body Problem</p>
+
+            <h3>The Physics Behind It</h3>
+            For this animation, the values used for masses and positions (the only initial conditions set) are all arbitrary, with a circle with a larger radius representing one with a larger mass. This is becuase the simulation does not aim to recreate an existing system of planets, but instead to show the interesting, complex, and chaotic results of gravitational attraction between planets.
+            <br>
+            You may also notice that the bodies seems to stay relatively centered; this is because the initial velocity of each body is 0, so this initial momentum in the system is 0, therefore each body moving a given direction will be countered by a movement of planets in the opposite direction to ensure the conservation of momentum. Over time, this ensures that the planets centre of mass remains where it was at the start, somewhere on the canvas. 
+            <br>
+            To add something a little extra, I decided to give the planets colours and make these colours correspond to their speed. Looking at the animation, you may be able to see that a planet appears more blue when it has a lower speed. The amount of green a body has is constant, and the amount of red is decided simply by which index it is in the bodies array.
+            
+            <h3>The Code</h3>
+            For anyone who is interested in actually understanding the code, I would really recommend following the research links on this page, as they explain the code much better than I can, especially if you are interested in following along to make your own simulation.
+            However, if you would like to see the finish product and look at my code, I have annotated it below.
+            <pre><code class="language-javascript atom-one-dark">
+  let bodies = []; // initialise array of bodies
+  let n = 7; // set value of n for the initial simulation
+
+  function setup() {
+      // creates a canvas and then appends it to the div with the id "canvasContainer" so it displays on the page
+      bodies = []
+      canvas = createCanvas(windowWidth/2, windowHeight/2);
+      canvas.parent("canvasContainer");
+      for (var i = 0; i < n; i++) {
+          // creates a new body with a mass of 10-50, at a random position within the middle 80% of the canvas
+          bodies.push(new Body(random(10,50), random(width*0.1, width*0.9), random(height*0.1, height*0.9), i));
+      }
+  }
+
+  function draw() {
+      // draw a rectangle to clear the background, but with opacity to create a trail effect
+      fill(0, 20);
+      rect(0, 0, width, height);
+      // calculate the force of attraction between each pair of bodies
+      for (var i = 0; i < bodies.length; i++) {
+          for (var j = 0; j < bodies.length; j++) {
+              if (i != j) {
+                  let force = bodies[j].attract(bodies[i]);
+                  bodies[i].applyForce(force);
+              }
+          }
+      }
+      // update and show each body
+      for (var i = 0; i < bodies.length; i++) {
+          bodies[i].update();
+          bodies[i].show();
+      }
+  }
+
+  class Body {
+      constructor(mass, x, y, index) {
+          this.index = index;
+          this.mass = mass;
+          this.position = createVector(x, y);
+          this.velocity = createVector(0, 0);
+          this.acceleration = createVector(0, 0);
+      }
+
+      // returns the force of attraction between this body and the given body
+      attract(planet) {
+          let force = p5.Vector.sub(this.position, planet.position);
+          let distance = force.mag();
+          distance = constrain(distance, 5, 25);
+          let strength = (0.4 * this.mass * planet.mass) / (distance * distance);
+          force.setMag(strength);
+          return force;
+      }
+
+      // updates the body's position based on its velocity and acceleration
+      update() {
+          this.velocity.add(this.acceleration);
+          this.position.add(this.velocity);
+          this.acceleration.mult(0);
+      }
+
+      // applies a force to the body, e.g. gravity
+      applyForce(force) {
+          let f = force.copy();
+          f.div(this.mass);
+          this.acceleration.add(f);
+      }
+
+      // draws the body on the canvas, with corresponding fill colour for speed and index
+      show() {
+          fill(255*this.index/n,125,255/this.velocity.mag());
+          circle(this.position.x, this.position.y, this.mass);
+      }
+  }
+
+  setup()
+  draw()
+
+            </code></pre>
           </div>
+
+
 
           <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
             <div class="portfolio-info">
-              <h3>Research links </h3>
+              <h3>Research links</h3>
               <ul>
-                <li><strong>Understanding and Solving the Three Body Problem</strong> <a href="https://youtu.be/YHHVkUrg4_M">Three Body Problem - YouTube</a></li>
+                <li><strong>The Nature of Code</strong><a href="https://amzn.eu/d/jcOjcEp">The Nature of Code Book</a> <a href="https://natureofcode.com/">natureofcode.com</a></li>
               </ul>
             </div>
           </div>
@@ -112,6 +205,8 @@
       </div>
 
     </section><!-- /Portfolio Details Section -->
+
+
 
   </main>
 
