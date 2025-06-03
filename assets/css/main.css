@@ -1450,6 +1450,23 @@ iframe.simulation {
   color: var(--accent-color);
 }
 
+/* CONIC SECTIONS ORBITS  */
+#halleysComet {
+  height: 200px;
+  width: auto;
+}
+
+#halleysCometHastings {
+  height: 200px;
+  width: auto;
+}
+
+.smallImgDesc {
+  font-size: 12px;
+  color: darkgray;
+  position: relative;
+}
+
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
