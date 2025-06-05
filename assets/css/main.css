@@ -1461,8 +1461,14 @@ iframe.simulation {
   width: auto;
 }
 
+#conicManuscript {
+  position: relatove;
+  width: 500px;
+  left: 900px;
+}
+
 .smallImgDesc {
-  font-size: 12px;
+  font-size: 14px;
   color: darkgray;
   position: relative;
 }
