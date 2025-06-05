@@ -27,11 +27,13 @@
   <!-- Main CSS File -->
   <link href="../assets/css/main.css" rel="stylesheet">
 
-  <!-- Code highlight.js -->
+  <!-- Highlight.js import to highlight code-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs-themes@1.0.0/tomorrow.css">
   <script>hljs.highlightAll();</script>
-
   <!-- =======================================================
   * Template Name: MyResume
   * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
@@ -97,6 +99,46 @@
 
               <p>
                 The following is the main logic of the program:
+                <pre><code>
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from scipy.integrate import ode
+    from sympy import *
+    from mpl_toolkits.mplot3d import Axes3D
+    import planetarydatafile as pd
+    from OrbitPropagator import OrbitPropagater as OP
+    plt.style.use('dark_background')
+
+    # define the central body
+    cb = pd.sun
+    ob = pd.venus
+
+    if __name__ == '__main__':
+
+        # initial conditions for orbit
+        r_mag_1 = ob['startPosition'] #cb['radius'] + 145000 # distance away from earth that the orbit is
+        v_mag_1 = ob['startVelocity']
+
+        # initial position and velocity vectors
+        r0_1 = [r_mag_1,0,0]    # position as a vector coordinate
+        v0_1 = [0,v_mag_1,0]    # starting velocity at right angle to position 
+                                #(this is true for all circular orbits, so close to true for the orbits we are modelling)
+
+        # timespan
+        tspan_1 = 500 *(3600 * 24.0) # in seconds (x * days)
+
+        #number of steps
+        num_of_steps = 1000
+
+        # timestep
+        dt_1 = int(tspan_1/num_of_steps)
+        #dt_1 = 10 * (24*60*60) # seconds, (x * days)
+
+        # calling functions that are in our custom orbit propogator file.
+        op_1 = OP(r0_1,v0_1,tspan_1,dt_1,cb=cb,ob=ob)
+        op_1.propogate_orbit()
+        op_1.plot_3d(show_plot=True)
+                </code></pre>
 
                 The following is the more complex details of fuctions called in the main program:
               </p>
