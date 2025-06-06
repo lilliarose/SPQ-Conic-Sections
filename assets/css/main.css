@@ -1457,25 +1457,30 @@ iframe.simulation {
 
 /* CONIC SECTIONS ORBITS  */
 #halleysComet {
-  height: 200px;
-  width: auto;
+  max-width: 490px;
+  width: 48%;
 }
 
 #halleysCometHastings {
-  height: 200px;
-  width: auto;
+  max-width: 290px;
+  width: 48%;
 }
 
 #conicManuscript {
-  position: relatove;
-  width: 34vw;
-  left: 61vw;
+  position: relative;
+  max-width: 500px;
+  width: 100%;
 }
 
 .smallImgDesc {
   font-size: 14px;
   color: darkgray;
   position: relative;
+}
+
+.equation {
+  max-width: 180px;
+  width: 100%
 }
 
 /*--------------------------------------------------------------
