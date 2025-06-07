@@ -1,7 +1,8 @@
 let mover1;
 
 function setup() {
-    createCanvas(500, 400);
+    canvas = createCanvas(500, 400);
+    canvas.parent("canvasContainer");
     mover1 = new Mover
 
 }

@@ -91,22 +91,22 @@
               </p>
               <h2>Explaing the code</h2>
               <p>
-                Full credit to [video creator] for the code - although I have slightly adapted and added in my own data and some functionality, the videos were instrumental in aiding the development of this code. Take a look at his videos by using the research link.
-                - two files, one with all the functions, other with main logic of program
-                - data file with different orbiting bodies (denoted in the code by OB) and central bodies (CB), where a body can be both an OB and CB, for example the Earth. However, it is important to know that this code only simulates the two-body problem so, for example, having the Moon orbit the Earth would not give a very valid result because the mass of the Moon is comparable to that of the Earth.
+                Full credit to Alfonso Gonzalez for the code - although I have slightly adapted and added in my own data and some functionality, the videos were instrumental in aiding the development of this code. Take a look at his videos by using the research link.
+                Throughout many stages in development, I had lots of files on the go and different logic used throughout the code, but the current stage of the code is what I will write about here. It makes use of two files, one with all the functions (such as calculating the steps of the orbit, displaying the orbit, etc), and the other with main logic of program. This made it much easier to read and write the code by adding a level of abstraction to the main file, and hopefully it will be easier to explain as well.
+                I also used a third file to contain all the data about different orbiting bodies (denoted by 'OB') and central bodies ('CB'), where a body can be both an OB and CB, for example the Earth. However, it is important to know that this code only simulates the two-body problem so, for example, having the Moon orbit the Earth would not give a very valid result because the mass of the Moon is comparable to that of the Earth.
                 This allows you to easily modify the code to go from having Venus orbit the Sun to Halley's Comet orbiting the Sun - by just changing one line of code!
               </p>
 
               <p>
                 The following is the main logic of the program:
-                <pre><code>
+  <pre><code>
     import numpy as np
     import matplotlib.pyplot as plt
     from scipy.integrate import ode
     from sympy import *
     from mpl_toolkits.mplot3d import Axes3D
     import planetarydatafile as pd
-    from OrbitPropagator import OrbitPropagater as OP
+    from OrbitPropagator import OrbitPropagater as OP   # importing the data file
     plt.style.use('dark_background')
 
     # define the central body
@@ -115,11 +115,13 @@
 
     if __name__ == '__main__':
 
-        # initial conditions for orbit
-        r_mag_1 = ob['startPosition'] #cb['radius'] + 145000 # distance away from earth that the orbit is
+        # initial conditions for orbit (position and velocity) which are obtained from the data file
+        r_mag_1 = ob['startPosition']  # distance away from central body that the orbit is
         v_mag_1 = ob['startVelocity']
 
         # initial position and velocity vectors
+        #     this assumes position and velocity vectors are at right angles to each other initially,
+        #     which varies in accuracy depending on the eccentricity of the orbit
         r0_1 = [r_mag_1,0,0]    # position as a vector coordinate
         v0_1 = [0,v_mag_1,0]    # starting velocity at right angle to position 
                                 #(this is true for all circular orbits, so close to true for the orbits we are modelling)
@@ -130,17 +132,156 @@
         #number of steps
         num_of_steps = 1000
 
-        # timestep
+        # timestep (calculated using the above values)
         dt_1 = int(tspan_1/num_of_steps)
         #dt_1 = 10 * (24*60*60) # seconds, (x * days)
 
-        # calling functions that are in our custom orbit propogator file.
+        # calling functions that are in our custom orbit propogator file, to both propogate then show the orbit
         op_1 = OP(r0_1,v0_1,tspan_1,dt_1,cb=cb,ob=ob)
         op_1.propogate_orbit()
         op_1.plot_3d(show_plot=True)
-                </code></pre>
+    </code></pre>
 
                 The following is the more complex details of fuctions called in the main program:
+    <pre><code>
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from scipy.integrate import ode
+
+    import planetarydatafile as pd
+
+    class OrbitPropagater:
+        def __init__(self,r0,v0,tspan,dt,cb=pd.earth,ob=None):
+            self.r0 = r0
+            self.v0 = v0
+            self.tspan = tspan
+            self.dt = dt
+            self.cb = cb
+            self.ob = ob
+
+            # =======================
+            # DEFINE NECESSARY VARIABLES FOR THE ORBIT
+            # =======================
+            
+            # total number of steps
+            self.n_steps = int(np.ceil(self.tspan/self.dt))
+
+            # initialise arrays
+            self.ys = np.zeros((self.n_steps,6)) # an array contianin 6 sub arrays (for each position and velocity) of 0s for each time step
+            self.ts = np.zeros((self.n_steps,1)) # one array of 
+
+            # initial conditions
+            self.y0 = self.r0 + self.v0
+            self.ys[0] = np.array(self.y0)
+            self.step = 1
+
+            # solver - to solve the differential equation of the orbit and get values for the position at each timestep
+            self.solver = ode(self.diffy_q)
+            self.solver.set_integrator('lsoda')
+            self.solver.set_initial_value(self.y0,0)
+
+        def propogate_orbit(self):
+
+            # propogate orbit
+            while self.solver.successful() and self.step < self.n_steps:
+                self.solver.integrate(self.solver.t+self.dt)
+                self.ts[self.step] = self.solver.t 
+                self.ys[self.step] = self.solver.y 
+                self.step+=1
+
+            self.rs = self.ys[:,:3]
+            self.vs = self.ys[:,3:]
+        
+        def diffy_q(self,t,y):
+
+            #unpack equation
+            rx,ry,rz,vx,vy,vz = y
+            r = np.array([rx,ry,rz]) # defining position as array, so it can be used as a vector
+
+            # finding the norm (magnitude) of the vector
+            norm_r = np.linalg.norm(r)
+
+            # two body acceleration, uses equation to determine the acceleration of the orbiting body
+            ax,ay,az = -r*self.cb['mu']/norm_r**3
+
+            # return derivatives of position (velocity) and velocity (acceleration)
+            return[vx,vy,vz,ax,ay,az]
+
+        def plot_3d(self, show_plot=False, save_plot = False, title = None):
+
+            # =======================
+            # PREPARE (screen, figure, axis, variables, etc)
+            # =======================
+
+            # 3D pLot - screen that will appear
+            fig=plt.figure(figsize=(10,10))
+                # the actual axis that will appear
+                # 111 - represents one plot on one figure (useful later when you may want to have multiple plots on one figure)
+            ax=fig.add_subplot(111, projection='3d')
+
+            # variables
+            r_plot = self.cb['radius']
+
+            # =======================
+            # PLOT TRAJECTORY
+            # =======================
+
+            # plot trajectory and starting point. rs[:,i] - plots all rows of the ith column, i.e all the x coordinaties, all the y coordinates, all the z coordinates
+            ax.plot(self.rs[:,0],self.rs[:,1],self.rs[:,2], 'w', zorder=10)
+            # starting point, put points in a list otherwise it plots a line with 1 point (which is nothing). 'wo' means white (w) and point (o), w* uses a * to denote a star symbol
+            ax.plot([self.rs[0,0]],[self.rs[0,1]],[self.rs[0,2]],'w*',zorder=10)
+
+            # =======================
+            # PLOT CENTRAL BODY
+            # =======================
+
+            _u, _v=np.mgrid[0:2*np.pi:20j,0:np.pi:10j]
+            _x=r_plot*np.cos(_u)*np.sin(_v)
+            _y=r_plot*np.sin(_u)*np.sin(_v)
+            _z=r_plot*np.cos(_v)
+
+            # this plots the surface of the central body, cmap denotes the colour and zorder makes it go behind all other plotted items (e.g. the orbits)
+            ax.plot_surface(_x,_y,_z, cmap='Blues', zorder = 0)
+
+            # =======================
+            # PLOT SUPPORTING ITEMS
+            # =======================
+
+            # x,y,z arrows
+            unit=r_plot*2.0 # length of arrows
+            x,y,z=[[0,0,0], [0,0,0], [0,0,0]] # where the arrows start
+            u,v,w=[[unit,0,0], [0,unit,0],[0,0,unit]] # where the arrows end
+            # quiver command creates arrows. x,y,z (start), u,v,w (end)
+            ax.quiver(x,y,z,u,v,w, color='w')
+
+            # check for custom axes limits
+            max_val=np.max(np.abs(self.rs))
+
+            # define axis limits (range)
+            ax.set_xlim([-max_val, max_val])
+            ax.set_ylim([-max_val,max_val])
+            ax.set_zlim([-max_val,max_val])
+            # set labels and title
+            ax.set_xlabel('X (km)'); ax.set_ylabel('Y (km)'); ax.set_zlabel('Z (km)');
+            ax.set_aspect ('equal')
+
+            if title:
+                ax.set_title(title)
+            else:
+                if self.ob:
+                    ax.set_title(('Orbit of ' + self.ob['name'] + ' around '+self.cb['name']))
+                else:
+                    ax.set_title(('Orbit around '+self.cb['name']))
+            # creates a legend
+            plt.legend(['Trajectory', 'Starting Position'])
+            
+            if show_plot:
+                # show the plot
+                plt.show()
+            
+            if save_plot:
+                plt.savefig(title+'.png',dpi=300)
+    </code></pre>
               </p>
 
               <p>
