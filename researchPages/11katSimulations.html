@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Research Section - Title</title>
+  <title>Kat Simulations - 3 Body Problem</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -61,10 +61,10 @@
         <nav class="breadcrumbs">
           <ol>
             <li><a href="../index.html">Home</a></li>
-            <li class="current">Three Body Problem</li>
+            <li class="current">Kat's Simulation - Three Body Problem</li>
           </ol>
         </nav>
-        <h1>Three Body Problem</h1>
+        <h1>Kat's Simulation - Three Body Problem</h1>
       </div>
     </div><!-- End Page Title -->
 
@@ -77,23 +77,85 @@
 
           <div class="col-lg-8" data-aos="fade-up">
             <div class="portfolio-description">
-              <h2>Three Body Problem</h2>
-              <p>
-                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
-              </p>
-              <!-- TODO: MAKE NOT ABLE TO RESIZE-->
+              <h2>The Three-Body Problem: A Quick Overview</h2>
+ 
+              The Three-Body Problem is a classic and fascinating challenge in physics. It asks a simple question: how do three massive objects move under each other’s gravitational pull? Unlike the two-body problem, which has neat, predictable orbits; the three-body problem becomes chaotic very quickly. The paths of the objects twist, spiral, and often behave unpredictably. There’s no general formula that can solve it for all situations, which is why simulations like the one I created are so important. They let us explore these complex dynamics numerically and visually. 
+               
               <iframe class="simulation" src="iframe - threebodyproblemsimulation.html"></iframe>
-              <p>
-                Amet consequatur qui dolore veniam voluptatem voluptatem sit. Non aspernatur atque natus ut cum nam et. Praesentium error dolores rerum minus sequi quia veritatis eum. Eos et doloribus doloremque nesciunt molestiae laboriosam.
-              </p>
+               
+               
+              How I Built the Simulation 
+              I built this simulation using Web VPython 3.2, a tool that lets you code physics-based animations directly in the browser. My goal was to create a clear and interactive way to visualise how three gravitationally interacting bodies behave over time. Here's how the program works, step by step: 
+              <ol>
+                <li>Setting Up the System </li>
+                I started by defining some physical constants, like the gravitational constant G, the mass of one body (based on the Moon), and a reference distance rem (roughly the Earth-Moon distance). Then, I created three spherical objects: mA, mB, and mC. I gave them different colors, sizes, and initial positions so their paths would be easy to track. I also turned on their trails so we can see the movement history over time. 
+                <li>Assigning Masses and Initial Momentum</li>
+                Each of the three bodies has a different mass, to make the system more dynamic. I manually set initial momentum vectors for two of them to get them moving. For the third body, I calculated its momentum so that the total momentum of the system is zero. This helps keep the simulation centered and avoids drifting off the screen over time. 
+                <li>Running the Simulation</li>
+              </ol>
 
-              <p>
-                Impedit ipsum quae et aliquid doloribus et voluptatem quasi. Perspiciatis occaecati earum et magnam animi. Quibusdam non qui ea vitae suscipit vitae sunt. Repudiandae incidunt cumque minus deserunt assumenda tempore. Delectus voluptas necessitatibus est.
-              </p>
-
-              <p>
-                Sunt voluptatum sapiente facilis quo odio aut ipsum repellat debitis. Molestiae et autem libero. Explicabo et quod necessitatibus similique quis dolor eum. Numquam eaque praesentium rem et qui nesciunt.
-              </p>
+              The core of the program is a loop that simulates time moving forward. For each step: 
+              I calculate the position vectors between each pair of bodies. 
+              I use Newton’s law of gravitation to work out the force between them. 
+              I update the momentum of each body based on those forces. 
+              Then, I update their positions based on the new momentum. 
+              This loop runs for the equivalent of about 100 lunar months, so we can observe long-term gravitational behavior. 
+               
+              [CODE HERE] 
+              Web VPython 3.2 
+                
+              #constants 
+              G=6.67e-11 #gravity constant 
+              moonMass=7.348e22 #the earths moons mass 
+              rem=384.4e6 #r from earth to earth moon 
+                
+              #setting moons up with orginal location, size and colour (turn on trail) 
+              mA = sphere(pos=vector(60,20,-20), radius=rem/20, color=color.red, make_trail=True) 
+              mB = sphere(pos=vector(rem,0.8*rem,40), radius=rem/15, color=color.yellow, make_trail=True) 
+              mC = sphere(pos=vector(1.5*rem,20,20), radius=rem/10, color=color.cyan, make_trail=True) 
+                
+              #adding masses to moons 
+              mA.m=moonMass 
+              mB.m=1.5*moonMass 
+              mC.m=2*moonMass 
+                
+              #adding intial momentum  
+              mA.p=mA.m*vector(10,20,20) 
+              mB.p=mB.m*vector(35,50,-30) 
+              #mC.p=mC.m*vector(-25,-70,10) 
+              mC.p=-(mA.p+mB.p) 
+                
+              t=0 
+              dt=3600 #time jump 
+                
+              tmax=24*dt*28 #a month time 
+                
+              while t<(100*tmax): 
+                rate(1000) #only do a set amount of calculations per second 
+                #calculating position vectors 
+                rAB=mB.pos-mA.pos 
+                rAC=mC.pos-mA.pos 
+                rBC=mC.pos-mB.pos 
+                #calculating the forces 
+                #force = gravity*mass1*mass2*unit vector/distnace between objects centres 
+                fAB=-G*mA.m*mB.m*norm(rAB)/mag(rAB)**2 #a pulling on b 
+                fAC=-G*mA.m*mC.m*norm(rAC)/mag(rAC)**2 #a pulling on c 
+                fBC=-G*mB.m*mC.m*norm(rBC)/mag(rBC)**2 # b pulling on c 
+                #updating momentums 
+                mA.p=mA.p+(-fAB-fAC)*dt #opposite forces from earlier 
+                mB.p=mB.p+(fAB-fBC)*dt 
+                mC.p=mC.p+(fAC+fBC)*dt 
+                #updating position 
+                mA.pos  = mA.pos+mA.p*dt/mA.m 
+                mB.pos  = mB.pos+mB.p*dt/mB.m 
+                mC.pos  = mC.pos+mC.p*dt/mC.m 
+                #update time 
+                t=t+dt 
+                 
+               
+              Why I Made This 
+              I wanted to bring the Three-Body Problem to life, something more engaging than just equations on paper. This simulation lets us see what happens when gravity takes control in a complex system. Watching how the orbits evolve shows just how sensitive and unpredictable these interactions can be. It’s a great way to learn about physics, chaos theory, and the limits of analytical solutions. 
+              Simulations like this aren’t just educational, they’re used in real-world science too. They help with planning space missions, studying how planets and stars form, and predicting the stability of entire solar systems.  
 
             </div>
           </div>
