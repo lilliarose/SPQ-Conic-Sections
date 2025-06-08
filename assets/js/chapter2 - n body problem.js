@@ -20,7 +20,11 @@ function submitCallback() {
 function setup() {
     // creates a canvas and then appends it to the div with the id "canvasContainer"
     bodies = []
-    canvas = createCanvas(windowWidth/2, windowHeight/2);
+    if (windowWidth/2 < 360) {
+        canvas = createCanvas(360, 360);
+    } else {
+        canvas = createCanvas(windowWidth/2, windowHeight/2);
+    }
     canvas.parent("canvasContainer");
     for (var i = 0; i < n; i++) {
         // creates a new body with a mass of 10-50, at a random position within the middle 80% of the canvas
