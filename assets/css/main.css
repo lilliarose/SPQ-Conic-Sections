@@ -1466,12 +1466,12 @@ iframe.simulation {
 /* CONIC SECTIONS ORBITS  */
 #halleysComet {
   max-width: 490px;
-  width: 48%;
+  width: 100%;
 }
 
 #halleysCometHastings {
   max-width: 290px;
-  width: 48%;
+  width: 100%;
 }
 
 #conicManuscript {
