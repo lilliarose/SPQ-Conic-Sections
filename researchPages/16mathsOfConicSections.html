@@ -69,7 +69,7 @@
 
           <div class="col-lg-8" data-aos="fade-up">
             <div class="portfolio-description">
-              <h1>Maths of Conic Sections</h1>
+              <h2>Introduction</h2>
               <p>
                 Conic sections are the curves generated when intersecting a double cone with a plane. Of these four curves can appear:
                 circles, ellipses, parabolae and hyperbolae. These relate to orbits between two massive bodies, for example the Earth orbits
@@ -77,9 +77,9 @@
               </p>
               <br>    
               <p>
-                The following possible cuts produce a possible orbit when performed on a double cone (which is two cones with one inverted 180 degrees ontop the other):
-                straight through, at a slight angle, parallel to the edge of the cone and at a steep angle. These cuts produce the conic
-                sections described earlier, and as seen in the image below.
+                The following cuts produce a possible orbit when performed on a double cone (which is two cones with one inverted 180 degrees ontop the other):
+                straight through; at a slight angle; parallel to the edge of the cone; and at a steep angle. These cuts produce the conic
+                sections described earlier, and can be seen in the image below.
               </p>
               <img src="images/conic-sections.png" style="max-width: 740px; width: 100%;"></img>
               <br>
@@ -117,24 +117,45 @@
               <img src="images/eccentricity_example.png" style="max-width: 500px; width: 100%;">
 
               <br><br>
-              <h2>Producing Graphs of Conic Sections in the Cartesian Plane</h1>
+              <h2 id="graphsOfConics">Producing Graphs of Conic Sections in the Cartesian Plane</h2>
               <p>It is possible to draw any conic section in a Cartesian Plane with the right equations. We will
                 let a be the semimajor axis of the shape, and b be the semiminor axis of the shape. If you do not know what this means,
                 since these axes mean different things for different conic sections, you can simply remember that a and b are constants.
                 Note that there are other ways of graphing these shapes, but we are doing it with the method that uses the a and b constants,
                 the semiminor and semimajor axes.</p>
-
-              <p>The circle can be represented with:</p>
-              <img src="images/equation1.png" class="equation" style="max-width: 180px;">
-
-              <p>An ellipse can be defined by the equation:</p>
-              <img src="images/equation2.png" class="equation" style="max-width: 161px;">
-
-              <p>An parabola can be drawn with::</p>
-              <img src="images/equation3.png" class="equation" style="max-width: 132px;">
-              
-              <p>And last but not least the equation for the hyperbola is:</p>
-              <img src="images/equation4.png" class="equation" style="max-width: 147px;">
+              <p>
+              <h5>Circle</h5>
+                For circles, the equation always takes the form of \( (x + x_1)^2 + (y + y_1)^2 = r^2 \), where the centre of the circle is \((x_1,y_1)\) and the radius is \(r\). The equation for the unit circle is \( x^2 + y^2 = 1 \), as this has a radius of \(1\) and is centred at the origin. 
+                To understand why the equation of a circle takes the form that it does, it is important to think about the radius of the circle, which must be constant. The radius, as can be seen in diagram, is the hypotenuese of a right angled triangle created by the \(x\) and \(y\) coordinates. Using Pythagoras to determine the length of the radius, we get that \( x^2 + y^2 = r^2 \) must be true for any point on the circle.
+                As the radius is both the semi-major and semi-minor axis for a circle, the equation of a standard circle can be written as \( x^2 + y^2 = a^2 \).
+              </p>
+              <iframe src="https://www.desmos.com/calculator/c6cfmozlnb?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+              <br><br>
+              <h5>Ellipse</h5>
+              An ellipse is slightly more complicated than a circle, because it has few extra elements to it, but this Desmos graph should help you understand what the different parts of an ellipse are and how they relate to the equation for an ellipse:
+              <p>\(\frac{x^2}{a^2}+\frac{y^2}{b^2} = 1\)</p>
+              <br>
+              <p class="caption-top">
+                <strong>Interactive: drag the values for \(a\) and \(b\) to see the ellipse change!</strong>
+              </p>
+              <iframe src="https://www.desmos.com/calculator/joldon9xma?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+              <br><br>
+              <h5>Parabola</h5>
+              <p> 
+                For a parabola, we will first consider a different way of writing the equation - a way which may seem more familiar to anyone studying maths. Any parabola can be represented through the equation \(y = ax^2 + bx + c\). The constants \(a\), \(b\) and \(c\) all have different effects on the parabola that the equation defines.
+                The coefficient of the \(x^2\) term, \(a\), determines the width of the parabola, essentially defining the 'stretch' applied on it, meaning it is narrow if \(a\) is large, and wide if \(a\) is small. If \(a\) is positive, the parabola opens upwards, and if \(a\) is negative, it opens downwards. The value of \(b\) determines the horizontal position of a parabola's turning point.
+                Finally, the value of \(c\) determines the y-intercept of a parabola, and as a consequence the height of its turning point. To explore the effects of these values further, you can use <a href="https://www.desmos.com/calculator/cqgaodk59m" target="_blank">this graph</a> on Desmos. 
+                For a standard parabola, the values of both \(b\) and \(c\) are \(0\), as the turning point is at \((0,0)\), hence the standard parabola is defined by the equation \(y = ax^2\), or when \(y = -a\) represents the directrix, you can also write this equation as \(x^2=4ay\). An example of this graph can be seen below, which was created on Desmos.
+                <br>
+              </p>
+              <p class="caption-top">
+                <strong>Interactive: drag the focus to see the parabola change!</strong>
+              </p>
+              <iframe src="https://www.desmos.com/calculator/00glkbvyls?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+              <br><br>
+              <h5>Hyperbola</h5>
+              <p>An hyperbola can be represented by the equation \(\frac{x^2}{a^2}-\frac{y^2}{b^2} = 1\)</p>
+              <iframe src="https://www.desmos.com/calculator/ktcaj6x5pp?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
             </div>
           </div>
 
@@ -142,8 +163,8 @@
             <div class="portfolio-info">
               <h3>Research links </h3>
               <ul>
-                <li><strong>Project URL</strong> <a href="#">www.example.com</a></li>
-                <li><strong>Project URL</strong> <a href="#">www.example.com</a></li>
+                <li><strong>Ellispe Research</strong> <a href="https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:conics/x9e81a4f98389efdf:ellipse-foci/v/foci-of-an-ellipse">khanacademy.org/math</a></li>
+                <li><strong>Parabola Research</strong> <a href="https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:conics/x9e81a4f98389efdf:hyperb-foci/v/foci-of-a-hyperbola">khanacademy.org/math</a></li>
                 <li><strong>Project URL</strong> <a href="#">www.example.com</a></li>
                 <li><strong>Project URL</strong> <a href="#">www.example.com</a></li>
               </ul>
@@ -188,6 +209,10 @@
 
   <!-- Main JS File -->
   <script src="../assets/js/main.js"></script>
+
+  <!-- Extra JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 
 </body>
 

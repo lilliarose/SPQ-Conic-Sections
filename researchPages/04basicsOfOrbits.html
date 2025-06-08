@@ -75,26 +75,25 @@
 
           <div class="col-lg-8" data-aos="fade-up">
             <div class="portfolio-description">
-              <h2>Understanding Orbits</h2>
-              <p>
-                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
-              </p>
-              <p>
-                Amet consequatur qui dolore veniam voluptatem voluptatem sit. Non aspernatur atque natus ut cum nam et. Praesentium error dolores rerum minus sequi quia veritatis eum. Eos et doloribus doloremque nesciunt molestiae laboriosam.
-              </p>
+              <h3>What is an orbit?</h3>
 
+              Orbits occur because of the gravitational attraction of two or more objects with mass in space. If these two bodies are moving with an initial velocity, the gravitational force causes both objects to travel on a curved path, rather than the straight path that they would take if no forces were acting on them. The reason this is often represented as one body orbiting around another stationary body is because the mass of the central body is usually much larger than that of the orbiting body, so the effect of gravity on the central body is negligible, as can be seen in the animation. In reality, the centre of mass of the system (the point which both bodies appear to orbit around, also known as the barycentre of the orbit), will be shifted a little towards the smaller body, but by such a tiny amount that accurate predictions of orbits can be made ignoring this fact. To understand this more, <a target=”_blank” href="https://www.youtube.com/watch?v=1k2vwZ70bXs"> this video</a> gives a really good explanation.
+              
+              <br><br>
+              <div id="canvasContainer"></div>
+              
+              <h3>Orbits and Conic Sections</h3>
+              
+              The next question to tackle is why orbits and conic sections are so intertwined. Whilst orbits with many bodies can appear chaotic, orbits with just two bodies (or other gravitational interactions largely defined by only two bodies), such as the one displayed above, are always defined by the equations of conic sections. When the equation that defines the force acting on an object due to gravity is solved, the result predicts that a body will follow a path of a conic section. The reason for this is that the \(1/r^2\)  term in the equation, when the orbital path is solved using differential equations, always leads to one of a circle, ellipse, hyperbola or parabola; these are all conic sections. This matches Kepler’s First Law, which states that planets move in ellipses with the Sun at one focus. Bound orbits (like satellites and planets) are ellipses (a special case of which is a circle, where it has an eccentricity of zero, meaning it is not at all 'stretched'), where the object has just the right energy to stay near the central body. If the object has more energy, it can follow a parabolic or hyperbolic path and escape the gravitational pull altogether. For example, these types of orbits are made use of in interplanetary missions during gravity assists - where an object can follow a parabolic or hyperbolic path when under the influence of planets in our Solar System. It is important to understand that these orbits are not random but precise mathematical consequences of Newtonian physics. Therefore, gravitational interactions in space follow rules that define exactly how objects move, and although they appear chaotic in problems that involve many bodies, they are always shaped by the balance of motion and attraction.
             </div>
-            <div id="canvasContainer"></div>
           </div>
 
           <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
             <div class="portfolio-info">
               <h3>Research links </h3>
               <ul>
-                <li><strong>Project URL</strong> <a href="#">www.example.com</a></li>
-                <li><strong>Project URL</strong> <a href="#">www.example.com</a></li>
-                <li><strong>Project URL</strong> <a href="#">www.example.com</a></li>
-                <li><strong>Project URL</strong> <a href="#">www.example.com</a></li>
+                <li><strong>Space Stack Exchange - Why are all trajectories in space a conic section?</strong> <a target="_blank" href="https://space.stackexchange.com/questions/56068/why-are-all-trajectories-in-space-a-conic-sections">space.stackexchange.com</a></li>
+                <li><strong>Braeunig Orbital Mechanics</strong> <a href="http://www.braeunig.us/space/orbmech.htm">www.braeunig.us</a></li>
               </ul>
             </div>
           </div>
@@ -137,6 +136,10 @@
 
   <!-- Main JS File -->
   <script src="../assets/js/main.js"></script>
+
+  <!-- Extra JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 
 </body>
 

@@ -909,6 +909,14 @@ section,
   width: 100%;
 }
 
+.caption-top {
+  margin-bottom: -2px;
+}
+
+iframe {
+  max-width: 100%;
+}
+
 .same-line {
   display: inline-block;
 }
