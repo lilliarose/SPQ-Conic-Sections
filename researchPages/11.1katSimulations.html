@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Kat - Solar System</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="../assets/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: MyResume
+  * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
+  * Updated: Jun 29 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+  <!-- Highlight.js import to highlight code-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs-themes@1.0.0/tomorrow.css">
+  <script>hljs.highlightAll();</script>
+
+</head>
+
+<body class="portfolio-details-page">
+
+  <header id="header" class="header d-flex flex-column justify-content-center">
+
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="../index.html#hero" class="active"><i class="bi bi-house navicon"></i><span>Home</span></a></li>
+        <li><a href="../index.html#about"><img class="navicon" src="../assets/img/astronaut.png"><span>Summary</span></a></li>
+        <li><a href="../index.html#timeline"><img class="navicon" src="../assets/img/solar-system.png"></i><span>Research Timeline</span></a></li>
+        <li><a href="../index.html#services"><img class="navicon" src="../assets/img/space-travel.png"><span>All Research</span></a></li>
+       </ul>
+    </nav>
+
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li class="current">Kat - Solar System Simulation</li>
+          </ol>
+        </nav>
+        <h1>Kat - Solar System Simulation</h1>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Portfolio Details Section -->
+    <section id="portfolio-details" class="portfolio-details section">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="row justify-content-between gy-4 mt-4">
+
+          <div class="col-lg-8" data-aos="fade-up">
+            <div class="portfolio-description">
+              The N-Body Problem and Our Solar System 
+              In physics, the n-body problem refers to predicting the motion of a system of n massive objects, all interacting through gravity. The three-body problem is a special case, but once you go beyond two objects, things get complicated especially when each object can tug on all the others. 
+              The solar system is a perfect example of an n-body system. While the Sun is by far the most massive object and dominates the motion of the planets, the planets also influence each other. Over time, small gravitational pulls between planets cause effects like orbital resonances, shifts in orbit, and long-term instabilities. To model this accurately, I created a simulation in Web VPython 3.2 that includes orbital inclinations, real masses, and velocities for all eight major planets. 
+               
+               
+              How I Built the Solar System Simulation 
+              This simulation is a scaled model of our solar system, coded entirely in Python using VPython for 3D visuals. I aimed to make it physically realistic, while keeping it efficient enough to run in a browser. 
+              1. Setting the Scene 
+              I started by defining some constants, including: 
+              The gravitational constant G 
+              The astronomical unit (AU), the average distance from Earth to the Sun 
+              Scaling factors for planet and Sun sizes so they can be seen clearly in the simulation 
+              I turned off auto-scaling in the scene to keep everything stable and set a large visual range to fit the full orbit of Neptune. 
+              2. Adding the Sun and Planets 
+              The Sun is placed at the centre with its real mass and no initial momentum. Then I loop through each planet's data, including its mass, distance from the Sun, orbital speed, colour, and radius, and create a corresponding sphere. 
+              To make the orbits more realistic, I included each planet’s orbital inclination. This is the angle between the planet’s orbital plane and the plane of Earth’s orbit (the ecliptic). I applied this by rotating each planet’s initial position and velocity around the x-axis. 
+              Each planet is given an initial momentum that causes it to orbit the Sun. Their velocities are chosen based on real orbital speeds, adjusted for the simulation scale. Trails are enabled so you can track their orbits visually as the system evolves. 
+              3. Calculating the Gravitational Interactions 
+              At each time step in the simulation: 
+              I calculate the gravitational force between every pair of objects. 
+              For efficiency, I loop through all combinations only once (since forces are equal and opposite). 
+              Each planet’s momentum is updated based on the total force acting on it. 
+              Then, I update the planet’s position based on its new momentum. 
+              The simulation runs over three Earth years, with each step advancing time by six hours. This gives a smooth and accurate visualisation of orbital motion. 
+               
+              <pre><code>
+
+  Web VPython 3.2 
+  from vpython import * 
+    
+  # Constants 
+  G = 6.67430e-11 
+  AU = 1.496e11 
+  planet_radius_scale = 3000 
+  sun_radius_scale = 100 
+  scene.autoscale = False 
+  scene.range = 6 * AU 
+  scene.title = "Solar System with Orbital Inclinations" 
+    
+  # Orbital inclinations (degrees) 
+  inclinations_deg = { 
+      "Mercury": 7.0, 
+      "Venus": 3.4, 
+      "Earth": 0.0, 
+      "Mars": 1.85, 
+      "Jupiter": 1.3, 
+      "Saturn": 2.5, 
+      "Uranus": 0.8, 
+      "Neptune": 1.8, 
+  } 
+    
+  # Planet data: name, mass, distance from Sun, orbital speed, color, real radius 
+  planets_data = [ 
+      ("Mercury", 3.30e23, 0.39 * AU, 47400, color.gray(0.5), 2.44e6), 
+      ("Venus",   4.87e24, 0.72 * AU, 35000, color.orange,    6.05e6), 
+      ("Earth",   5.97e24, 1.00 * AU, 29780, color.blue,      6.37e6), 
+      ("Mars",    6.42e23, 1.52 * AU, 24070, color.red,       3.39e6), 
+      ("Jupiter", 1.90e27, 5.20 * AU, 13070, color.orange,    6.99e7), 
+      ("Saturn",  5.68e26, 9.58 * AU, 9690,  color.yellow,    5.82e7), 
+      ("Uranus",  8.68e25, 19.2 * AU, 6810,  color.cyan,      2.54e7), 
+      ("Neptune", 1.02e26, 30.1 * AU, 5430,  color.blue,      2.46e7), 
+  ] 
+    
+  # Create the Sun 
+  sun = sphere(pos=vector(0, 0, 0), radius=6.9634e8 * sun_radius_scale, color=color.orange, emissive=True) 
+  sun.m = 1.989e30 
+  sun.p = vector(0, 0, 0) 
+    
+  bodies = [sun] 
+    
+  # Create planets 
+  for name, mass, distance, speed, col, real_radius in planets_data: 
+      inclination = radians(inclinations_deg[name]) 
+    
+      # Start position on y-axis for rotation to work correctly 
+      base_pos = vector(0, distance, 0) 
+      base_vel = vector(-speed, 0, 0) 
+    
+      # Rotate around x-axis to apply inclination 
+      pos = base_pos.rotate(angle=inclination, axis=vector(1, 0, 0)) 
+      vel = base_vel.rotate(angle=inclination, axis=vector(1, 0, 0)) 
+    
+      planet = sphere( 
+          pos=pos, 
+          radius=real_radius * planet_radius_scale, 
+          color=col, 
+          make_trail=True, 
+          retain=500 
+      ) 
+      planet.m = mass 
+      planet.p = mass * vel 
+      bodies.append(planet) 
+    
+  # Time control 
+  t = 0 
+  dt = 60 * 60 * 7  # 6 hours 
+    
+  # Simulation loop 
+  while t < 10 * 365 * 24 * 3600:  # 3 years 
+      rate(1000) 
+    
+      forces = [vector(0, 0, 0) for _ in bodies] 
+    
+      for i in range(len(bodies)): 
+          for j in range(i + 1, len(bodies)): 
+              r = bodies[j].pos - bodies[i].pos 
+              F = G * bodies[i].m * bodies[j].m * norm(r) / mag(r)**2 
+              forces[i] += F 
+              forces[j] -= F 
+    
+      for i in range(len(bodies)): 
+          bodies[i].p += forces[i] * dt 
+          bodies[i].pos += bodies[i].p * dt / bodies[i].m 
+    
+      t += dt 
+                 
+              </code></pre>
+              
+              <h2>Why I Made This </h2>
+              I created this solar system simulation to better understand how gravitational interactions work across many bodies, and how they can be visualised in real time. Seeing the planets orbiting the Sun, each on slightly tilted paths, gives a much better sense of the solar system’s structure than static images. 
+              While simplified (I didn’t include moons, asteroids, or minor perturbations), this simulation still captures the essence of the n-body problem where every object affects every other, and over long timescales, those tiny forces add up. 
+              This kind of simulation is used in astronomy, space mission planning, and even predicting the long-term fate of planetary systems.  
+
+            </div>
+          </div>
+
+          <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="portfolio-info">
+              <h3>Research links </h3>
+              <ul>
+                <li><strong>Understanding and Solving the Three Body Problem</strong> <a href="https://youtu.be/YHHVkUrg4_M">Three Body Problem - YouTube</a></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Portfolio Details Section -->
+
+  </main>
+
+  <footer id="footer" class="footer position-relative light-background">
+    <div class="container">
+      <h3 class="sitename">Conic Sections and the Kepler Problem in Classical Physics</h3>
+      <div class="col-md-12">
+        <p>Attribution of icons used for this website</p>
+        <a href="https://www.flaticon.com/free-icons/space" title="space icons">Space icons created by amonrat rungreangfangsai - Flaticon</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
