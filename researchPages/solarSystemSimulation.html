@@ -1,0 +1,196 @@
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript">
+
+// START JAVASCRIPT
+;(function() {;
+var ρσ_modules = {};
+ρσ_modules.pythonize = {};
+
+(function(){
+    function strings() {
+        var string_funcs, exclude, name;
+        string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
+        if (!arguments.length) {
+            exclude = (function(){
+                var s = ρσ_set();
+                s.jsset.add("split");
+                s.jsset.add("replace");
+                return s;
+            })();
+        } else if (arguments[0]) {
+            exclude = Array.prototype.slice.call(arguments);
+        } else {
+            exclude = null;
+        }
+        if (exclude) {
+            string_funcs = string_funcs.difference(set(exclude));
+        }
+        var ρσ_Iter0 = string_funcs;
+        ρσ_Iter0 = ((typeof ρσ_Iter0[Symbol.iterator] === "function") ? (ρσ_Iter0 instanceof Map ? ρσ_Iter0.keys() : ρσ_Iter0) : Object.keys(ρσ_Iter0));
+        for (var ρσ_Index0 of ρσ_Iter0) {
+            name = ρσ_Index0;
+            (ρσ_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name] = (ρσ_expr_temp = ρσ_str.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name];
+        }
+    };
+    if (!strings.__module__) Object.defineProperties(strings, {
+        __module__ : {value: "pythonize"}
+    });
+
+    ρσ_modules.pythonize.strings = strings;
+})();
+async function __main__() {
+"use strict";
+    var display = canvas;
+    var scene = canvas();
+
+    var version, print, arange, __name__, type, ρσ_ls, G, AU, planet_radius_scale, sun_radius_scale, inclinations_deg, planets_data, sun, bodies, inclination, base_pos, base_vel, pos, vel, planet, ρσ_unpack, name, mass, distance, speed, col, real_radius, t, dt, forces, _, r, F, j, i;
+    version = ρσ_list_decorate([ "3.2", "glowscript" ]);
+    Array.prototype['+'] = function(r) {return this.concat(r)}
+    Array.prototype['*'] = function(r) {return __array_times_number(this, r)}
+    window.__GSlang = "vpython";
+    print = GSprint;
+    arange = range;
+    __name__ = "__main__";
+    type = pytype;
+    var strings = ρσ_modules.pythonize.strings;
+
+    strings();
+    "5";
+    G = 6.6743e-11;
+    "6";
+    AU = 1496e8;
+    "7";
+    planet_radius_scale = 3e3;
+    "8";
+    sun_radius_scale = 100;
+    (await sleep(.1));
+    "9";
+    scene.autoscale = false;
+    "10";
+    scene.range = 6["*"](AU);
+    "11";
+    "14";
+    inclinations_deg = (function(){
+        var ρσ_d = ρσ_dict();
+        ρσ_d.set("Mercury", 7);
+        ρσ_d.set("Venus", 3.4);
+        ρσ_d.set("Earth", 0);
+        ρσ_d.set("Mars", 1.85);
+        ρσ_d.set("Jupiter", 1.3);
+        ρσ_d.set("Saturn", 2.5);
+        ρσ_d.set("Uranus", .8);
+        ρσ_d.set("Neptune", 1.8);
+        return ρσ_d;
+    }).call(this);
+    "26";
+    planets_data = ρσ_list_decorate([ ["Mercury", 3.3e23, .39["*"](AU), 47400, color.gray(.5), 
+    244e4], ["Venus", 4.87e24, .72["*"](AU), 35e3, color.orange, 605e4], ["Earth", 5.97e24, 
+    1["*"](AU), 29780, color.blue, 637e4], ["Mars", 6.42e23, 1.52["*"](AU), 24070, color.red, 
+    339e4], ["Jupiter", 1.9e27, 5.2["*"](AU), 13070, color.orange, 699e5], ["Saturn", 5.68e26, 
+    9.58["*"](AU), 9690, color.yellow, 582e5], ["Uranus", 8.68e25, 19.2["*"](AU), 6810, color.cyan, 
+    254e5], ["Neptune", 1.02e26, 30.1["*"](AU), 5430, color.blue, 246e5] ]);
+    "38";
+    sun = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: vector(0, 0, 0), radius: 69634e4["*"](sun_radius_scale), color: color.orange, emissive: true})]);
+    "39";
+    sun.m = 1.989e30;
+    "40";
+    sun.p = vector(0, 0, 0);
+    "42";
+    bodies = ρσ_list_decorate([ sun ]);
+    "45";
+    var ρσ_Iter1 = planets_data;
+    ρσ_Iter1 = ((typeof ρσ_Iter1[Symbol.iterator] === "function") ? (ρσ_Iter1 instanceof Map ? ρσ_Iter1.keys() : ρσ_Iter1) : Object.keys(ρσ_Iter1));
+    for (var ρσ_Index1 of ρσ_Iter1) {
+        ρσ_unpack = ρσ_flatten(ρσ_Index1);
+        name = ρσ_unpack[0];
+        mass = ρσ_unpack[1];
+        distance = ρσ_unpack[2];
+        speed = ρσ_unpack[3];
+        col = ρσ_unpack[4];
+        real_radius = ρσ_unpack[5];
+        "46";
+        inclination = (await radians(ρσ_getitem(inclinations_deg, name)));
+        "49";
+        base_pos = vector(0, distance, 0);
+        "50";
+        base_vel = vector(1["-u"]()["*"](speed), 0, 0);
+        "53";
+        pos = ρσ_interpolate_kwargs.call(base_pos, base_pos.rotate, [ρσ_desugar_kwargs({angle: inclination, axis: vector(1, 0, 0)})]);
+        "54";
+        vel = ρσ_interpolate_kwargs.call(base_vel, base_vel.rotate, [ρσ_desugar_kwargs({angle: inclination, axis: vector(1, 0, 0)})]);
+        "56";
+        planet = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: pos, radius: real_radius["*"](planet_radius_scale), color: col, make_trail: true, retain: 500})]);
+        "63";
+        planet.m = mass;
+        "64";
+        planet.p = mass["*"](vel);
+        "65";
+        bodies.append(planet);
+    }
+    "68";
+    t = 0;
+    "69";
+    dt = 60["*"](60)["*"](6);
+    "72";
+    while (t["<"](10["*"](365)["*"](24)["*"](3600))) {
+        "73";
+        (await rate(1e3));
+        "75";
+        forces = (function() {
+            var ρσ_Iter = bodies, ρσ_Result = [], _;
+            ρσ_Iter = ((typeof ρσ_Iter[Symbol.iterator] === "function") ? (ρσ_Iter instanceof Map ? ρσ_Iter.keys() : ρσ_Iter) : Object.keys(ρσ_Iter));
+            for (var ρσ_Index of ρσ_Iter) {
+                _ = ρσ_Index;
+                ρσ_Result.push(vector(0, 0, 0));
+            }
+            ρσ_Result = ρσ_list_constructor(ρσ_Result);
+            return ρσ_Result;
+        })();
+        "77";
+        var ρσ_Iter2 = range(len(bodies));
+        ρσ_Iter2 = ((typeof ρσ_Iter2[Symbol.iterator] === "function") ? (ρσ_Iter2 instanceof Map ? ρσ_Iter2.keys() : ρσ_Iter2) : Object.keys(ρσ_Iter2));
+        for (var ρσ_Index2 of ρσ_Iter2) {
+            i = ρσ_Index2;
+            "78";
+            var ρσ_Iter3 = range(i["+"](1), len(bodies));
+            ρσ_Iter3 = ((typeof ρσ_Iter3[Symbol.iterator] === "function") ? (ρσ_Iter3 instanceof Map ? ρσ_Iter3.keys() : ρσ_Iter3) : Object.keys(ρσ_Iter3));
+            for (var ρσ_Index3 of ρσ_Iter3) {
+                j = ρσ_Index3;
+                "79";
+                r = ρσ_getitem(bodies, j).pos["-"](1["*"](ρσ_getitem(bodies, i).pos));
+                "80";
+                F = G["*"](ρσ_getitem(bodies, i).m)["*"](ρσ_getitem(bodies, j).m)["*"](norm(r))["/"](Math.pow(mag(r), 2));
+                "81";
+                ρσ_setitem(forces, i, ρσ_getitem(forces, i)["+"](F));
+                "82";
+                ρσ_setitem(forces, j, ρσ_getitem(forces, j)["-"](F));
+            }
+        }
+        "84";
+        var ρσ_Iter4 = range(len(bodies));
+        ρσ_Iter4 = ((typeof ρσ_Iter4[Symbol.iterator] === "function") ? (ρσ_Iter4 instanceof Map ? ρσ_Iter4.keys() : ρσ_Iter4) : Object.keys(ρσ_Iter4));
+        for (var ρσ_Index4 of ρσ_Iter4) {
+            i = ρσ_Index4;
+            "85";
+            ρσ_getitem(bodies, i).p=ρσ_getitem(bodies, i).p["+"](ρσ_getitem(forces, i)["*"](dt));
+            "86";
+            ρσ_getitem(bodies, i).pos=ρσ_getitem(bodies, i).pos["+"](ρσ_getitem(bodies, i).p["*"](dt)["/"](ρσ_getitem(bodies, i).m));
+        }
+        "88";
+        t=t["+"](dt);
+    }
+};
+if (!__main__.__module__) Object.defineProperties(__main__, {
+    __module__ : {value: null}
+});
+
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+</script>
+</div>

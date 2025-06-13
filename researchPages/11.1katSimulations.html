@@ -90,27 +90,33 @@
               In physics, the n-body problem refers to predicting the motion of a system of n massive objects, all interacting through gravity. The three-body problem is a special case, but once you go beyond two objects, things get complicated especially when each object can tug on all the others. 
               The solar system is a perfect example of an n-body system. While the Sun is by far the most massive object and dominates the motion of the planets, the planets also influence each other. Over time, small gravitational pulls between planets cause effects like orbital resonances, shifts in orbit, and long-term instabilities. To model this accurately, I created a simulation in Web VPython 3.2 that includes orbital inclinations, real masses, and velocities for all eight major planets. 
                
-               
+              <iframe class="simulation" src="solarSystemSimulation.html"></iframe>
+              <br><br>
               How I Built the Solar System Simulation 
               This simulation is a scaled model of our solar system, coded entirely in Python using VPython for 3D visuals. I aimed to make it physically realistic, while keeping it efficient enough to run in a browser. 
-              1. Setting the Scene 
-              I started by defining some constants, including: 
-              The gravitational constant G 
-              The astronomical unit (AU), the average distance from Earth to the Sun 
-              Scaling factors for planet and Sun sizes so they can be seen clearly in the simulation 
-              I turned off auto-scaling in the scene to keep everything stable and set a large visual range to fit the full orbit of Neptune. 
-              2. Adding the Sun and Planets 
-              The Sun is placed at the centre with its real mass and no initial momentum. Then I loop through each planet's data, including its mass, distance from the Sun, orbital speed, colour, and radius, and create a corresponding sphere. 
-              To make the orbits more realistic, I included each planet’s orbital inclination. This is the angle between the planet’s orbital plane and the plane of Earth’s orbit (the ecliptic). I applied this by rotating each planet’s initial position and velocity around the x-axis. 
-              Each planet is given an initial momentum that causes it to orbit the Sun. Their velocities are chosen based on real orbital speeds, adjusted for the simulation scale. Trails are enabled so you can track their orbits visually as the system evolves. 
-              3. Calculating the Gravitational Interactions 
-              At each time step in the simulation: 
-              I calculate the gravitational force between every pair of objects. 
-              For efficiency, I loop through all combinations only once (since forces are equal and opposite). 
-              Each planet’s momentum is updated based on the total force acting on it. 
-              Then, I update the planet’s position based on its new momentum. 
-              The simulation runs over three Earth years, with each step advancing time by six hours. This gives a smooth and accurate visualisation of orbital motion. 
-               
+              <ol>
+                <li>Setting the Scene </li>
+                I started by defining some constants, including: 
+                <ul>
+                  <li>The gravitational constant G</li>
+                  <li>The astronomical unit (AU), the average distance from Earth to the Sun</li>
+                  <li>Scaling factors for planet and Sun sizes so they can be seen clearly in the simulation</li>
+                </ul>
+                I turned off auto-scaling in the scene to keep everything stable and set a large visual range to fit the full orbit of Neptune. 
+                <li>Adding the Sun and Planets </li>
+                The Sun is placed at the centre with its real mass and no initial momentum. Then I loop through each planet's data, including its mass, distance from the Sun, orbital speed, colour, and radius, and create a corresponding sphere. 
+                To make the orbits more realistic, I included each planet’s orbital inclination. This is the angle between the planet’s orbital plane and the plane of Earth’s orbit (the ecliptic). I applied this by rotating each planet’s initial position and velocity around the x-axis. 
+                Each planet is given an initial momentum that causes it to orbit the Sun. Their velocities are chosen based on real orbital speeds, adjusted for the simulation scale. Trails are enabled so you can track their orbits visually as the system evolves. 
+                <li>Calculating the Gravitational Interactions</li>  
+                At each time step in the simulation: 
+                <ul>
+                  <li>I calculate the gravitational force between every pair of objects.</li>
+                  <li>For efficiency, I loop through all combinations only once (since forces are equal and opposite).</li>
+                  <li>Each planet’s momentum is updated based on the total force acting on it.</li>
+                  <li>Then, I update the planet’s position based on its new momentum.</li>
+                </ul>
+                The simulation runs over three Earth years, with each step advancing time by six hours. This gives a smooth and accurate visualisation of orbital motion. 
+              </ol>
               <pre><code>
 
   Web VPython 3.2 
