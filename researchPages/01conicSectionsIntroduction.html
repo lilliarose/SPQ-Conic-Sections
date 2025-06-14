@@ -39,9 +39,8 @@
       <ul>
         <li><a href="../index.html#hero" class="active"><i class="bi bi-house navicon"></i><span>Home</span></a></li>
         <li><a href="../index.html#about"><img class="navicon" src="../assets/img/astronaut.png"><span>Summary</span></a></li>
-        <li><a href="../index.html#timeline"><img class="navicon" src="../assets/img/solar-system.png"></i><span>Research Timeline</span></a></li>
-        <li><a href="../index.html#services"><img class="navicon" src="../assets/img/space-travel.png"><span>All Research</span></a></li>
-       </ul>
+        <li><a href="../index.html#research"><img class="navicon" src="../assets/img/space-travel.png"><span>Research</span></a></li>
+      </ul>
     </nav>
 
   </header>
@@ -91,11 +90,16 @@
               </p>
               <img class="conic-img" src="images/parabola.jpg">
 
-              <h2>Conic Sections - The Hyperbola</h2>
+              <h2 id="hyperbola">Conic Sections - The Hyperbola</h2>
               <p>
-                A hyperbola is the entire of set of points in a plane with the given condition that the distance from any two fixed points is a constant.
+                A hyperbola is the set of points in a plane that satisfy the following condition:
+                <br>
+                Call the point \(P\), and the foci \(F_1\) and \(F_2\).
+                Now, consider the distance from the point to each foci (we will take the absolute value to remove any negative distances), which can be denoted by \(|PF_1|\) and \(|PF_2|\).
+                The difference between these distances must be a constant, which we can call \(2a\). Therefore, we end up with the equation: \(|PF_1| - |PF_2| = 2a\).
               </p>
               <img class="conic-img" src="images/hyperbola.jpg">
+              <br>
               <h2 style="margin-top: 35px;">Whispering Gallery Proof</h2>
               <h6 style="margin-top: -15px;">(St Paul's Cathedral)</h6>
               <p>
@@ -155,6 +159,9 @@
 
   <!-- Main JS File -->
   <script src="../assets/js/main.js"></script>
+
+  <!-- Extra JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 </body>
 
