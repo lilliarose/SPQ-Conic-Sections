@@ -206,7 +206,7 @@
                 <br><br>
                 <b>\(E = 0.5m(\frac{dr}{dt})^2 + \frac{L^2}{2mr^2} - \frac{k}{r}\)</b>
                 <br><br>
-                We now have <b>\(E\)</b> in terms of the radial coordinate, <b>\(r\)</b>. The equation <b>\(E = Radial Kinetic Energy + U_eff(r)\)</b> describes the total energy of a system that has centripetal forces. This equation looks similar to the one we have for energy above, <b>\(Radial KE = 0.5m(\frac{dr}{dt}^2\)</b>. This means that the effective potential <b>\(= \frac{L^2}{2mr^2} - \frac{k}{r}\)</b>. The effective potential can be used to show the general shape that a planet would take based on how much energy it has. However, this is not our final equation, as we want to find the function r(θ). We have two useful equations now:
+                We now have <b>\(E\)</b> in terms of the radial coordinate, <b>\(r\)</b>. The equation <b>\(E = Radial Kinetic Energy + U_{eff}(r)\)</b> describes the total energy of a system that has centripetal forces. This equation looks similar to the one we have for energy above, <b>\(Radial KE = 0.5m(\frac{dr}{dt}^2\)</b>. This means that the effective potential <b>\(= \frac{L^2}{2mr^2} - \frac{k}{r}\)</b>. The effective potential can be used to show the general shape that a planet would take based on how much energy it has. However, this is not our final equation, as we want to find the function r(θ). We have two useful equations now:
                 <br><br>
                 A) <b>\(\frac{dθ}{dt} = \frac{L^2}{2mr^2}\)</b>
                 <br><br>
@@ -242,41 +242,41 @@
                 <br><br>
                 <b>\(\left( \frac{dr}{d\theta} \right)^2 = \left( \frac{L^2}{km} \cdot \frac{1}{u^2} \cdot \frac{du}{d\theta} \right)^2\)</b>
                 <br><br>
-                (dr/dθ)2 = (L2/km)2 * 1/u4 * (du/dθ)2
+                <b>\(\left( \frac{dr}{d\theta} \right)^2 = \left( \frac{L^2}{km} \right)^2 \cdot \frac{1}{u^4} \cdot \left( \frac{du}{d\theta} \right)^2\)</b>
                 <br><br>
                 Sub this into our equation from earlier, (dr/dθ)2(L2/2mr2)2 = (2E/m - L/(mr)2 + 2k/rm) to get 
                 <br><br>
-                ((L2/km)2 * 1/u4 * (du/dθ)2)(L2/2mr2)2 = (2E/m - L/(mr)2 + 2k/rm)
+                <b>\(\left( \left( \frac{L^2}{km} \right)^2 \cdot \frac{1}{u^4} \cdot \left( \frac{du}{d\theta} \right)^2 \right) \cdot \left( \frac{L^2}{2mr^2} \right)^2 = \left( \frac{2E}{m} - \frac{L^2}{m^2 r^2} + \frac{2k}{rm} \right)\)</b>
                 <br><br>
                 You can simplify this to get a much smaller equation
                 <br><br>
-                u’(θ)2 = -u2 + 2u + 2EL2/mk2
+                <b>\(u’(θ)^2 = -u^2 + 2u + \frac{2EL^2}{mk^2}\)</b>
                 <br><br>
                 We want to find u(θ) so we can integrate this equation to find that. However, it will be much easier to take a second derivative of this equation, giving
                 <br><br>
-                2u’u’’ = -2u’u + 2u’
+                <b>\(2u’u’’ = -2u’u + 2u’\)</b>
                 <br><br>
                 u’ cancels out on both sides to give a very simple equation for u,
                 <br><br>
-                2u’’ = -2u + 2
+                <b>\(2u’’ = -2u + 2\)</b>
                 <br><br>
-                u’’ = 2 - u
+                <b>\(u’’ = 2 - u\)</b>
                 <br><br>
                 This is very similar to a harmonic oscillator equation, ignoring the +1 shift. This is easily adapted into the normal sinusoidal solution of a harmonic oscillator, {epsilon}cos(θ), by just adding the shift of 1,
                 <br><br>
-                u(θ) = {epsilon}cos(θ) + 1
+                <b>\(u(θ) = \epsiloncos(θ) + 1\)</b>
                 <br><br>
-                {epsilon} here is an integration constant from solving using the second derivative. It is related to the energy and angular momentum. If we plug the above equation back into our u’(θ)2 equation, we get:
+                <b>\(\epsilon\)</b> here is an integration constant from solving using the second derivative. It is related to the energy and angular momentum. If we plug the above equation back into our u’(θ)^2 equation, we get:
                 <br><br>
-                u’(θ)2 = (2EL2)/mk2 -({epsilon}cos(θ) + 1)({epsilon}cos(θ) - 1)
+                <b>\(u’(θ)^2 = \frac{2EL^2}{mk^2} -(\epsiloncos(θ) + 1)(\epsiloncos(θ) - 1)\)</b>
                 <br><br>
-                When solved for {epsilon},
+                When solved for <b>\(\epsilon\)</b>,
                 <br><br>
-                {epsilon} = sqrt(1+(2EL2)/mk2)
+                <b>\(\epsilon = \sqrt{1+\frac{2EL^2}{mk2}}\)</b>
                 <br><br>
-                We can now put our equation for u(θ) back into the equation r = L2/km * 1/u in order to get:
+                We can now put our equation for u(θ) back into the equation <b>\(r = \frac{L^2}{km} \cdot \frac{1}{u}\)</b> in order to get:
                 <br><br>
-                r(θ) = L2/km * 1/{epsilon}cos(θ) + 1
+                <b>\(r(θ) = \frac{L2}{km} \cdot \frac{1}{\epsiloncos(θ) + 1}\)</b>
                 <br><br>
                 Now, we have the function r(θ), which is the function that describes the shape of our orbit. It will return the shape of a conic section of eccentricity {epsilon}
 
